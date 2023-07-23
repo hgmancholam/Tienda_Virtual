@@ -29,7 +29,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords do not match");
+      alert("Passwords do not match");
       return;
     }
 
@@ -45,7 +45,7 @@ const SignUpForm = () => {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, email already in use");
       } else {
-        console.log("user creation encountered an error", error);
+        console.log("User creation encountered an error", error);
       }
     }
   };
