@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInWithRedirect,
@@ -8,8 +8,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+} from 'firebase/auth';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAt4DXcnw-1p-4QDE_mUz3NmXhha739U9w",
@@ -17,7 +17,7 @@ const firebaseConfig = {
   projectId: "crwn-ecommerce-project",
   storageBucket: "crwn-ecommerce-project.appspot.com",
   messagingSenderId: "667610961800",
-  appId: "1:667610961800:web:00fd46e05903aa32e5cc3d",
+  appId: "1:667610961800:web:00fd46e05903aa32e5cc3d"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -25,7 +25,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
-  prompt: "select_account",
+  prompt: 'select_account',
 });
 
 export const auth = getAuth();
@@ -42,7 +42,7 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
 
-  const userDocRef = doc(db, "users", userAuth.uid);
+  const userDocRef = doc(db, 'users', userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 
@@ -58,7 +58,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("Error creating the user", error.message);
+      console.log('error creating the user', error.message);
     }
   }
 
@@ -79,6 +79,5 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStatechangeListener = (callback) => {
-  return onAuthStateChanged(auth, callback);
-};
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
